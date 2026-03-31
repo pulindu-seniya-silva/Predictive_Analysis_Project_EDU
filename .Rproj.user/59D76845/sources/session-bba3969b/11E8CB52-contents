@@ -82,3 +82,40 @@ str(data)
 sum(is.na(data))
 
 data$Class <- factor(data$Class, levels = c("L", "M", "H"))
+
+
+#Feature Engineering (for Classification Model)
+#Create modelling data set
+
+model_data <- data %>%
+  select(raisedhands,
+         VisITedResources,
+         AnnouncementsView,
+         Discussion,
+         StudentAbsenceDays,
+         Class)
+
+#check target variables again
+str(model_data$Class)
+levels(model_data$Class)
+
+#Encode Categorical Variable
+model_data$StudentAbsenceDays <- as.factor(model_data$StudentAbsenceDays)
+
+#create dummy variables for regression
+model_data <- model.matrix(Class ~ ., data = model_data)[,-1] %>%
+  as.data.frame()
+
+# Add target back
+model_data$Class <- data$Class
+
+#create engagement score
+model_data$EngagementScore <- 
+  data$raisedhands +
+  data$VisITedResources +
+  data$AnnouncementsView +
+  
+#str (model_data)
+  summary(model_data)
+
+  data$Discussion
