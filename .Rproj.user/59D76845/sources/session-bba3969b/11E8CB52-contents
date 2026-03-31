@@ -160,5 +160,20 @@ train_index <- createDataPartition(model_data$Class, p = 0.7, list = FALSE)
 train_data <- model_data[train_index, ]
 test_data  <- model_data[-train_index, ]
 
+#Train Multinomial Logistic Regression
+library(nnet)
 
+# Train model
+log_model <- multinom(Class ~ ., data = train_data)
+
+#model summary
+summary(log_model)
+
+#make a prediction
+pred_log <- predict(log_model, newdata = test_data)
+
+#evaluate the model
+library(caret)
+
+confusionMatrix(pred_log, test_data$Class)
 

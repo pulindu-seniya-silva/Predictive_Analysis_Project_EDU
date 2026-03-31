@@ -118,12 +118,62 @@ model_data$EngagementScore <-
 #str (model_data)
   summary(model_data)
   
-  # For multinomial logistic regression
-  library(nnet)
-  
-  # For decision tree
-  library(rpart)
-  library(rpart.plot)
-  
-  # For evaluation
-  library(caret)
+
+# For multinomial logistic regression
+install.packages("nnet")
+
+# For decision tree
+install.packages("rpart")
+install.packages("rpart.plot")
+
+# For evaluation
+install.packages("caret")
+
+install.packages("rpart.plot", dependencies = TRUE)
+
+# Install all packages with dependencies
+install.packages(c("nnet", "rpart", "rpart.plot", "caret"), dependencies = TRUE)
+
+library(nnet)       # Multinomial logistic regression
+library(rpart)      # Decision tree
+library(rpart.plot) # Plot decision tree
+library(caret)      # Model evaluation
+
+
+ 
+# For multinomial logistic regression
+library(nnet)
+
+# For decision tree
+library(rpart)
+library(rpart.plot)
+
+# For evaluation
+library(caret)
+
+
+#Train-Test Split
+set.seed(123)
+
+train_index <- createDataPartition(model_data$Class, p = 0.7, list = FALSE)
+
+train_data <- model_data[train_index, ]
+test_data  <- model_data[-train_index, ]
+
+#Train Multinomial Logistic Regression
+library(nnet)
+
+# Train model
+log_model <- multinom(Class ~ ., data = train_data)
+
+#model summary
+summary(log_model)
+
+#make a prediction
+pred_log <- predict(log_model, newdata = test_data)
+
+#evaluate the model
+library(caret)
+
+confusionMatrix(pred_log, test_data$Class)
+
