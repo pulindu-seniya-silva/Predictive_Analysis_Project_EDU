@@ -177,3 +177,24 @@ library(caret)
 
 confusionMatrix(pred_log, test_data$Class)
 
+#Train Decision Tree
+library(rpart)
+
+tree_model <- rpart(Class ~ ., data = train_data, method = "class")
+
+#Train decision tree
+library(rpart)
+
+tree_model <- rpart(Class ~ ., data = train_data, method = "class")
+
+library(rpart.plot)
+
+rpart.plot(tree_model)
+
+#predict using tree
+pred_tree <- predict(tree_model, test_data, type = "class")
+
+#Evaluate tree
+confusionMatrix(pred_tree, test_data$Class)
+
+summary(log_model)
