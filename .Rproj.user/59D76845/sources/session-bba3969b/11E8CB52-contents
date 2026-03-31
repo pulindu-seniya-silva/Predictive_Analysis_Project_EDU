@@ -30,4 +30,55 @@ colSums(is.na(data))
 sum(duplicated(data))
 
 
+#Handle Missing Values & Duplicates
+# Remove duplicate rows (if any)
+data <- distinct(data)
 
+# Remove rows with missing values (safe approach for this dataset)
+data <- na.omit(data)
+
+#Correct Data Types
+#Convert categorical variables → factors
+data$gender <- as.factor(data$gender)
+data$NationalITy <- as.factor(data$NationalITy)
+data$PlaceofBirth <- as.factor(data$PlaceofBirth)
+data$StageID <- as.factor(data$StageID)
+data$GradeID <- as.factor(data$GradeID)
+data$SectionID <- as.factor(data$SectionID)
+data$Topic <- as.factor(data$Topic)
+data$Semester <- as.factor(data$Semester)
+data$Relation <- as.factor(data$Relation)
+data$ParentAnsweringSurvey <- as.factor(data$ParentAnsweringSurvey)
+data$ParentschoolSatisfaction <- as.factor(data$ParentschoolSatisfaction)
+data$StudentAbsenceDays <- as.factor(data$StudentAbsenceDays)
+
+
+#Convert numerical columns properly
+data$raisedhands <- as.numeric(data$raisedhands)
+data$VisITedResources <- as.numeric(data$VisITedResources)
+data$AnnouncementsView <- as.numeric(data$AnnouncementsView)
+data$Discussion <- as.numeric(data$Discussion)
+
+#define target variables
+data$Class <- as.factor(data$Class)
+
+# Check levels
+levels(data$Class)
+
+#Basic Consistency Checks
+# Summary statistics
+summary(data)
+
+# Check value ranges (important for viva)
+range(data$raisedhands)
+range(data$VisITedResources)
+range(data$AnnouncementsView)
+range(data$Discussion)
+
+# Final structure check
+str(data)
+
+# Confirm no missing values
+sum(is.na(data))
+
+data$Class <- factor(data$Class, levels = c("L", "M", "H"))
