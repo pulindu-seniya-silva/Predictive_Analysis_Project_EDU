@@ -3,24 +3,24 @@
     "path": "D:/3rd year 2 semester projects/Predictive_Analysis_Project/scripts/main_analysis.R",
     "project_path": "scripts/main_analysis.R",
     "type": "r_source",
-    "hash": "1475926043",
+    "hash": "0",
     "contents": "",
-    "dirty": false,
+    "dirty": true,
     "created": 1774931942734.0,
     "source_on_save": false,
     "relative_order": 1,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "89,22",
-        "scrollLine": "87"
+        "cursorPosition": "162,0",
+        "scrollLine": "142"
     },
     "folds": "",
-    "lastKnownWriteTime": 1774934363,
+    "lastKnownWriteTime": 1774935278,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1774934363903,
+    "last_content_update": 1774935961530,
     "read_only": false,
     "read_only_alternatives": []
 }

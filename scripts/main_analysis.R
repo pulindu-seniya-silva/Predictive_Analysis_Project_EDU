@@ -117,5 +117,13 @@ model_data$EngagementScore <-
   
 #str (model_data)
   summary(model_data)
-
-  data$Discussion
+  
+  # For multinomial logistic regression
+  library(nnet)
+  
+  # For decision tree
+  library(rpart)
+  library(rpart.plot)
+  
+  # For evaluation
+  library(caret)
